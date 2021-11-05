@@ -133,14 +133,18 @@ rotation="0 90 0"
 irisdoor="blades:9; radius:3;"
 ></a-entity>
 
+<a-entity
+id="objeto"
+></a-entity>
+
 <script>
   let posX = [];
   let posY = [];
   let posZ = [];
   
   //let cena = document.querySelector('#my-objects');
-  const cena = document.querySelector('a-scene');
-  //const cena = sceneEl.getElementById('#objeto');
+  //const cena = document.querySelector('a-scene');
+  const cena = sceneEl.getElementById('#objeto');
   
   let quantidade = 50;
   let elemento = [];
@@ -160,11 +164,11 @@ irisdoor="blades:9; radius:3;"
   for(var i = 0; i < quantidade; i++){
   elemento[i] = document.createElement('a-sphere');
   elemento[i].setAttribute("id","a"+i);  
-  elemento[i].setAttribute("animation-test");
+  //elemento[i].setAttribute("animation-test");
    elemento[i].setAttribute("color","white"); 
   //elemento[i].setAttribute("gltf-model","#girl")
   //elemento[i].setAttribute("scale","0.02 0.02 0.02");
-    elemento[i].setAttribute("scale","0.5 0.5 0.5");
+    elemento[i].setAttribute("scale","2 2 2");
   //elemento[i].setAttribute("rotation", "180 0 0");
   //elemento[i].setAttribute("rotation", "180 "+getRndInteger(0, 360)+" 0");  
   //elemento[i].setAttribute("animation-mixer","loop: once");
