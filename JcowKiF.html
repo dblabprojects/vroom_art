@@ -136,12 +136,21 @@ irisdoor="blades:9; radius:3;"
 
 
 <a-entity
-	text="value: TESTANDO; align: center; side: double; width:100; height: 50"
-	
+id="texto"
+text="value: TESTANDO; align: center; side: double; width:100; height: 50"
 ></a-entity>
 
 <a-box
 position="3 3 3"
-scale="1 1 1"
+scale="0.1 1 0.1"
 ></a-box>
+
+<script>
+document.addEventListener('click', (e) => {
+     
+  document.querySelector('#texto').setAttribute("visible","false");
+ 
+  });
+
+ </script>
 
