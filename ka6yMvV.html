@@ -1,11 +1,15 @@
 
 <a-entity position="1.69 0 -0.86" scale="0.54 0.54 0.54">
-	<a-entity
-		id="pressure"
-		text="value: Pressao: 0; align: center;"
-		position="-2.85 2.8 -1.07"
-		scale="0.48054 0.48054 0.48054" rotation="0 14 0"
-	></a-entity>
+	<a-entity id="dash_one" position="-1.50 1.4 -1.4" rotation="0 14 0" scale="0.005 0.006 0.008"
+	material="color: #1c1c1c" gltf-model="https://dblabprojects.github.io/vroom_art//monitor/scene.gltf">
+		<a-entity
+			id="pressure"
+			text="value: Pressao: 0; align: center;"
+			position="-1 -1 -1"
+			scale="1 1 1"
+		></a-entity>
+	</a-entity>
+
 
 	<!-- <a-entity text-plane="text: 0 °c;" id="temperature" rotation="0 14 0" scale="0.2 0.2 0.2" position="-2.50 2.5 -1.15"></a-entity> -->
 
@@ -28,8 +32,7 @@
 		position="0.5 2.35 -1.65" scale="0.48054 0.48054 0.48054"
 	></a-entity>
 
-	<a-entity id="dash_one" position="-1.50 1.4 -1.4" rotation="0 14 0" scale="0.005 0.006 0.008"
-	material="color: #1c1c1c" gltf-model="https://dblabprojects.github.io/vroom_art//monitor/scene.gltf"></a-entity>
+
 	<a-entity id="dash_two" position="1.50 1.4 -1.4" rotation="0 -14 0" scale="0.005 0.006 0.008"
 	material="color: #1c1c1c" gltf-model="https://dblabprojects.github.io/vroom_art//monitor/scene.gltf"></a-entity>
 </a-entity>		
