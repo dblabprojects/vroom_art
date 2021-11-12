@@ -1,26 +1,32 @@
-<!-- compass rose
-<a-entity position="45 3.0 0" scale="0.5 0.5 0.5">
-	<a-box width="1.0" height="0.1" depth="0.1" position="0.5 0 0" material="color: #ff0000"></a-box>
-	<a-box width="0.1" height="1.0" depth="0.1" position="0 0.5 0" material="color: #00ff00"></a-box>
-	<a-box width="0.1" height="0.1" depth="1.0" position="0 0 0.5" material="color: #0000ff"></a-box>
+
+<a-entity
+	id="pressure"
+	text="value: Pressao: 0; align: center;"
+	rotation="0 0 0"
+	position="-2.85 2.8 -1.07"
+></a-entity>
+
+<!-- <a-entity text-plane="text: 0 °c;" id="temperature" rotation="0 14 0" scale="0.2 0.2 0.2" position="-2.50 2.5 -1.15"></a-entity> -->
+
+<a-entity id="humidity"
+	geometry="primitive: torus; arc: 180; radius: 1.02; radiusTubular: 0.07; segmentsRadial: 34; segmentsTubular: 33"
+	position="0.73 2.5 -1.6" rotation="0 -194 0" material="color: #1eff00" scale="0.231 0.231 0.231">
 </a-entity>
--->
 
-            <a-text value="Pressao: 0" id="pressure" text="" position="-2.85 2.8 -1.07"
-                scale="0.48054 0.48054 0.48054" rotation="0 14 0"></a-text>
-            <a-entity text-plane="text: 0 °c;" id="temperature" rotation="0 14 0" scale="0.2 0.2 0.2" position="-2.50 2.5 -1.15"></a-entity>
+<a-entity
+	id="humidity_percent" 
+	text="value: 0 %; align: center;"
+	rotation="0 0 0"
+	position="0.60 2.5 -1.65" scale="0.48054 0.48054 0.48054"
+></a-entity>
+
+<a-entity
+	id="humidity_percent" 
+	text="value: Umidade; align: center;"
+	rotation="0 -14 0"
+	position="0.5 2.35 -1.65" scale="0.48054 0.48054 0.48054"
+></a-entity>
           
-            <a-entity id="humidity"
-                geometry="primitive: torus; arc: 180; radius: 1.02; radiusTubular: 0.07; segmentsRadial: 34; segmentsTubular: 33"
-                position="0.73 2.5 -1.6" rotation="0 -194 0" material="color: #1eff00" scale="0.231 0.231 0.231">
-            </a-entity>
-            <a-text value="0 %" id="humidity_percent" text="" position="0.60 2.5 -1.65" scale="0.48054 0.48054 0.48054"
-                rotation="0 -14 0"></a-text>
-            <a-text value="Umidade" text="" position="0.5 2.35 -1.65" scale="0.48054 0.48054 0.48054"
-                rotation="0 -14 0"></a-text>
-          
-
-
 
 <a-box
 iot-sensor
