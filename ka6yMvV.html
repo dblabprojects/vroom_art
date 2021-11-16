@@ -1,13 +1,21 @@
 
-<a-entity id="iot_lab" position="0 0 0" scale="0.5 0.5 0.5">
+<a-entity id="iot_lab" position="4.3 0.5 4" scale="0.5 0.5 0.5">
 
 	<a-entity 
 	id="dash_one" 
-	position="1 1 1" 
+	position="1 1 0" 
 	rotation="0 270 0" 
 	scale="0.005 0.006 0.008"
 	material="color: #1c1c1c" 
 	gltf-model="https://dblabprojects.github.io/vroom_art//monitor/scene.gltf">
+		<a-entity
+		iot-sensor
+		id="pressure"
+		text="value: Pressao: 0"
+		position="1 3 1"
+		scale="5 5 5" 
+		rotation="0 270 0"
+		></a-entity>
 	</a-entity>
 
 	<a-entity 
@@ -19,14 +27,7 @@
 	gltf-model="https://dblabprojects.github.io/vroom_art//monitor/scene.gltf">
 	</a-entity>
 
-	<a-entity
-	iot-sensor
-	id="pressure"
-	text="value: Pressao: 0"
-	position="1 3 1"
-	scale="5 5 5" 
-	rotation="0 270 0"
-	></a-entity>
+
 
 	<!-- <a-entity text-plane="text: 0 °c;" id="temperature" rotation="0 14 0" scale="0.2 0.2 0.2" position="-2.50 2.5 -1.15"></a-entity> -->
 
