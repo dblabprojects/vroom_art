@@ -1,41 +1,59 @@
 
-<a-entity position="1.69 0 2" scale="0.54 0.54 0.54">
-	<a-entity id="dash_one" position="-1.50 1.4 -1.4" rotation="0 14 0" scale="0.005 0.006 0.008"
-	material="color: #1c1c1c" gltf-model="https://dblabprojects.github.io/vroom_art//monitor/scene.gltf">
+<a-entity position="0 0 0" scale="1 1 1">
 
+	<a-entity 
+	id="dash_one" 
+	position="5.7 2 4" 
+	rotation="0 270 0" 
+	scale="0.005 0.006 0.008"
+	material="color: #1c1c1c" 
+	gltf-model="https://dblabprojects.github.io/vroom_art//monitor/scene.gltf">
+	</a-entity>
+
+	<a-entity 
+	id="dash_two" 
+	position="5.7 2 7" 
+	rotation="0 270 0" 
+	scale="0.005 0.006 0.008"
+	material="color: #1c1c1c" 
+	gltf-model="https://dblabprojects.github.io/vroom_art//monitor/scene.gltf">
 	</a-entity>
 
 	<a-entity
 	iot-sensor
 	id="pressure"
 	text="value: Pressao: 0"
-	position="5 3 8"
-	scale="5 5 5" rotation="0 270 0"
+	position="6 3 5"
+	scale="5 5 5" 
+	rotation="0 270 0"
 	></a-entity>
 
 	<!-- <a-entity text-plane="text: 0 °c;" id="temperature" rotation="0 14 0" scale="0.2 0.2 0.2" position="-2.50 2.5 -1.15"></a-entity> -->
 
-	<a-entity id="humidity"
-		geometry="primitive: torus; arc: 180; radius: 1.02; radiusTubular: 0.07; segmentsRadial: 34; segmentsTubular: 33"
-		position="0.73 2.5 -1.6" rotation="0 -194 0" material="color: #1eff00" scale="0.231 0.231 0.231">
+	<a-entity 
+	id="humidity"
+	geometry="primitive: torus; arc: 180; radius: 1.02; radiusTubular: 0.07; segmentsRadial: 34; segmentsTubular: 33"
+	position="6 2 5" 
+	rotation="0 270 0" 
+	material="color: #1eff00" 
+	scale="5 5 5">
 	</a-entity>
 
 	<a-entity
-		id="humidity_percent" 
-		text="value: 0 %; align: center;"
-		rotation="0 0 0"
-		position="0.60 2.5 -1.65" scale="0.48054 0.48054 0.48054"
+	id="humidity_percent" 
+	text="value: 0 %; align: left;"
+	position="6 3 4" 
+	rotation="0 270 0" 
+	scale="5 5 5"
 	></a-entity>
 
 	<a-entity
-		id="humidity_percent" 
-		text="value: Umidade; align: center;"
-		rotation="0 -14 0"
-		position="0.5 2.35 -1.65" scale="0.48054 0.48054 0.48054"
+	id="humidity_percent" 
+	text="value: Umidade; align: left;"
+	position="6 2 4" 
+	rotation="0 270 0" 
+	scale="5 5 5"
 	></a-entity>
 
-
-	<a-entity id="dash_two" position="1.50 1.4 -1.4" rotation="0 -14 0" scale="0.005 0.006 0.008"
-	material="color: #1c1c1c" gltf-model="https://dblabprojects.github.io/vroom_art//monitor/scene.gltf"></a-entity>
 </a-entity>		
 
