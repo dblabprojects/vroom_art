@@ -1,83 +1,86 @@
 <script>
+	AFRAME.registerComponent('iot-sensor', {
+		schema: {
 
-	var client = new Paho.MQTT.Client("emqx.dbserver.com.br", 443, new Date().toString())
-	const colors = {
-		success: "#34C800",
-		notice: "#DBFF00",
-		danger: "#FF3D00"
-	}
-	client.onConnectionLost = onConnectionLost;
-	client.onMessageArrived = onMessageArrived;
-	const options = {
-		useSSL: true,
-		timeout: 3,
-		userName: "dbdevices",
-		password: "bnj4i9MirzHy2f",
-		onSuccess: onConnect
+		},
 
-	}
+		init: () => {
+			const sceneEl = this.el.sceneEl
 
-	function onConnect() {
-
-		client.subscribe("dblab/mqtt/dblab/Vroom-01/status");
-		console.log("data   ", new Date());
-	}
-
-	/**
-	 * 
-	 * @param {number} temperature 
-	 */
-
-
-	function onMessageArrived(message) {
-		var data = JSON.parse(message.payloadString.toString())[0];
-		console.log(data)
-
-		setTorus(data.Environment.Humidity.toFixed(2), 'humidity', 100, '%', [[20, colors.notice], [70, colors.success], [100, colors.danger]])
-		setTorus(data.Environment.TVOC, 'tvoc', 5500, 'ppb')
-		setTorus(data.Environment.CO2, 'co2', 2100, 'ppm')
-		setText(data.Environment.Pressure / 1000, 'pressure', 'kPa')
-		setText(data.Environment.Temperature, 'temperature', 'C')
-		setText(data.Environment.Altitude.toFixed(2), 'altitude', 'm')
-	}
-
-	function setTorus(currentValue, id, max, suffix, color_map = []) {
-		let color = "#34C800";
-		color_map.forEach((value, index) => {
-
-			if ((index == 0)) {
-				if (currentValue <= value[0])
-					color = value[1];
-			} else {
-				if ((currentValue > color_map[index - 1][0]) && (currentValue <= value[0]))
-					color = value[1]
+			var client = new Paho.MQTT.Client("emqx.dbserver.com.br", 443, new Date().toString())
+			const colors = {
+				success: "#34C800",
+				notice: "#DBFF00",
+				danger: "#FF3D00"
 			}
-		})
+			client.onConnectionLost = onConnectionLost;
+			client.onMessageArrived = onMessageArrived;
+			const options = {
+				useSSL: true,
+				timeout: 3,
+				userName: "dbdevices",
+				password: "bnj4i9MirzHy2f",
+				onSuccess: onConnect
 
-		const torus_arc = ((currentValue * 180) / max)
-		document.getElementById(`${id}_bar`).setAttribute('geometry', { arc: torus_arc })
-		document.getElementById(`${id}_bar`).setAttribute('material', { color })
-		document.getElementById(`${id}_value`).setAttribute('text', { value: `${currentValue} ${suffix}` })
+			}
 
-	}
+			function onConnect() {
 
-	function setText(currentValue, id, suffix) {
-		document.getElementById(`${id}_value`).setAttribute('text', { value: `${currentValue} ${suffix}` })
-	}
+				client.subscribe("dblab/mqtt/dblab/Vroom-01/status");
+				console.log("data   ", new Date());
+			}
 
-	function onConnectionLost(responseObject) {
-		if (responseObject.errorCode !== 0) {
-			console.log("onConnectionLost:" + responseObject.errorMessage);
+		
+
+
+			function onMessageArrived(message) {
+				var data = JSON.parse(message.payloadString.toString())[0];
+				console.log(data)
+
+				setTorus(data.Environment.Humidity.toFixed(2), 'humidity', 100, '%', [[20, colors.notice], [70, colors.success], [100, colors.danger]])
+				setTorus(data.Environment.TVOC, 'tvoc', 5500, 'ppb')
+				setTorus(data.Environment.CO2, 'co2', 2100, 'ppm')
+				setText(data.Environment.Pressure / 1000, 'pressure', 'kPa')
+				setText(data.Environment.Temperature, 'temperature', 'C')
+				setText(data.Environment.Altitude.toFixed(2), 'altitude', 'm')
+			}
+
+			function setTorus(currentValue, id, max, suffix, color_map = []) {
+				let color = "#34C800";
+				color_map.forEach((value, index) => {
+
+					if ((index == 0)) {
+						if (currentValue <= value[0])
+							color = value[1];
+					} else {
+						if ((currentValue > color_map[index - 1][0]) && (currentValue <= value[0]))
+							color = value[1]
+					}
+				})
+
+				const torus_arc = ((currentValue * 180) / max)
+				document.getElementById(`${id}_bar`).setAttribute('geometry', { arc: torus_arc })
+				document.getElementById(`${id}_bar`).setAttribute('material', { color })
+				document.getElementById(`${id}_value`).setAttribute('text', { value: `${currentValue} ${suffix}` })
+
+			}
+
+			function setText(currentValue, id, suffix) {
+				document.getElementById(`${id}_value`).setAttribute('text', { value: `${currentValue} ${suffix}` })
+			}
+
+			function onConnectionLost(responseObject) {
+				if (responseObject.errorCode !== 0) {
+					console.log("onConnectionLost:" + responseObject.errorMessage);
+				}
+			}
+			client.connect(options)
 		}
-	}
-
-	window.onload = () => {
-		client.connect(options)
+	})
 
 
-	}
 </script>
-<a-entity id="iot_lab" position="4.3 0.5 4" scale="0.5 0.5 0.5">
+<a-entity id="iot_lab" iot-lab-sensor position="4.3 0.5 4" scale="0.5 0.5 0.5">
 
 	<a-entity id="dash_one" position="1 1 0" rotation="0 270 0" scale="0.005 0.006 0.008" material="color: #1c1c1c"
 		gltf-model="https://dblabprojects.github.io/vroom_art//monitor/scene.gltf">
@@ -102,7 +105,8 @@
 
 		<a-entity id="humidity_value" text="value: 0 %; align: center;" position="1 2.14 1.95" rotation="0 270 0"
 			scale="1.5 1.5 1.5"></a-entity>
-		<a-image src="ttps://dblabprojects.github.io/vroom_art//images/Umidade.png" rotation="0 270 0" scale="0.7 0.7 0.7" position="0.981 2.1 1.932">
+		<a-image src="ttps://dblabprojects.github.io/vroom_art//images/Umidade.png" rotation="0 270 0"
+			scale="0.7 0.7 0.7" position="0.981 2.1 1.932">
 		</a-image>
 
 	</a-entity>
@@ -113,7 +117,8 @@
 
 		<a-entity id="pressure_value" text="value: 0 kPa; align: center;" position="1 2.14 1.90" rotation="0 270 0"
 			scale="1.5 1.5 1.5"></a-entity>
-		<a-image src="ttps://dblabprojects.github.io/vroom_art//images/Pressure.png" rotation="0 270 0" scale="0.7 0.7 0.7" position="0.981 2.1 1.932">
+		<a-image src="ttps://dblabprojects.github.io/vroom_art//images/Pressure.png" rotation="0 270 0"
+			scale="0.7 0.7 0.7" position="0.981 2.1 1.932">
 		</a-image>
 
 	</a-entity>
@@ -127,7 +132,8 @@
 
 		<a-entity id="tvoc_value" text="value: 0 ppb; align: center;" position="1 2.14 1.95" rotation="0 270 0"
 			scale="1.5 1.5 1.5"></a-entity>
-		<a-image src="ttps://dblabprojects.github.io/vroom_art//images/TVOC.png" rotation="0 270 0" scale="0.7 0.7 0.7" position="0.981 2.1 1.932">
+		<a-image src="ttps://dblabprojects.github.io/vroom_art//images/TVOC.png" rotation="0 270 0" scale="0.7 0.7 0.7"
+			position="0.981 2.1 1.932">
 		</a-image>
 
 	</a-entity>
@@ -138,7 +144,8 @@
 
 		<a-entity id="temperature_value" text="value: 0 ºC ; align: center;" position="1 2.14 1.90" rotation="0 270 0"
 			scale="1.5 1.5 1.5"></a-entity>
-		<a-image src="ttps://dblabprojects.github.io/vroom_art//images/Temperature.png" rotation="0 270 0" scale="0.7 0.7 0.7" position="0.981 2.1 1.932">
+		<a-image src="ttps://dblabprojects.github.io/vroom_art//images/Temperature.png" rotation="0 270 0"
+			scale="0.7 0.7 0.7" position="0.981 2.1 1.932">
 		</a-image>
 
 	</a-entity>
@@ -152,7 +159,8 @@
 
 		<a-entity id="co2_value" text="value: 0 ppm; align: center;" position="1 2.14 1.95" rotation="0 270 0"
 			scale="1.5 1.5 1.5"></a-entity>
-		<a-image src="ttps://dblabprojects.github.io/vroom_art//images/CO2.png" rotation="0 270 0" scale="0.7 0.7 0.7" position="0.981 2.1 1.932">
+		<a-image src="ttps://dblabprojects.github.io/vroom_art//images/CO2.png" rotation="0 270 0" scale="0.7 0.7 0.7"
+			position="0.981 2.1 1.932">
 		</a-image>
 
 	</a-entity>
@@ -166,7 +174,8 @@
 
 		<a-entity id="altitude_value" text="value: 0 m ; align: center;" position="1 2.14 1.90" rotation="0 270 0"
 			scale="1.5 1.5 1.5"></a-entity>
-		<a-image src="ttps://dblabprojects.github.io/vroom_art//images/Altitude.png" rotation="0 270 0" scale="0.7 0.7 0.7" position="0.981 2.1 1.932">
+		<a-image src="ttps://dblabprojects.github.io/vroom_art//images/Altitude.png" rotation="0 270 0"
+			scale="0.7 0.7 0.7" position="0.981 2.1 1.932">
 		</a-image>
 
 	</a-entity>
