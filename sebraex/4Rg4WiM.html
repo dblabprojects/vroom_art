@@ -1,3 +1,21 @@
-<!-- VROOM - POC NPCS -->
+<!-- MARISTA COVID VISUALIZAÇÃO DE DADOS -->
 
-<a-entity smart-npc="id: azzi" position="0 1.5 0" media-loader="src: https://dbvroom-assets.db-vroom.com/files/15394c5c-9a97-48c8-8301-58d53fe03bb1.glb;"></a-entity>
+<a-box
+class="interactable"
+id="button1"
+position= "0 0 0"
+scale="5 5 5"
+width="0.2"
+height="0.2"
+depth="0.2"
+material="color: blue;"
+tags="singleActionButton: true;"
+is-remote-hover-target
+animation="
+	property: rotation;
+	to: 0 -360 0;
+	easing: linear;
+	loop: true;
+	dur: 3000;
+"
+></a-box>
