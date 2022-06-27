@@ -21,9 +21,9 @@
 	</a-entity>
 
 
-
 	<!--Umidade-->
-	<a-entity position=" -1.30 -3.35 -5.184" scale="2.30 2.30 2.30">
+	<a-entity id ="humidity"  position=" -1.30 -3.35 -5.184" scale="2.30 2.30 2.30">
+		
 		<a-entity id="humidity_bar"
 			geometry="primitive: torus; arc: 180; radius: 1.02; radiusTubular: 0.07; segmentsRadial: 34; segmentsTubular: 33"
 			position="1 2.1 1.93" rotation="0 90 0" material="color: #1eff00" scale="0.18 0.18 0.18">
@@ -40,7 +40,6 @@
 	<!--Pressão-->
 	<a-entity id="pressure" position="-1.35 -3.35  -3.737" scale="2.30 2.30 2.30" rotation="0 270 0">
 
-
 		<a-entity id="pressure_value" text="value: 0 kPa; align: center;" position="0.95 2.14 1.90" rotation="0 0 0"
 			scale="1.5 1.5 1.5"></a-entity>
 		<a-image src="https://dblabprojects.github.io/vroom_art/images/Pressure.png" rotation="0 0 0"
@@ -49,9 +48,9 @@
 
 	</a-entity>
 
-
 	<!--TVOC-->
-	<a-entity position=" -1.30 -3.35 -2.148" scale="2.30 2.30 2.30">
+	<a-entity id="tvoc" position=" -1.30 -3.35 -2.148" scale="2.30 2.30 2.30">
+		
 		<a-entity id="tvoc_bar"
 			geometry="primitive: torus; arc: 180; radius: 1.02; radiusTubular: 0.07; segmentsRadial: 34; segmentsTubular: 33"
 			position="1 2.1 1.93" rotation="0 90 0" material="color: #1eff00" scale="0.18 0.18 0.18">
@@ -66,8 +65,7 @@
 	</a-entity>
 
 	<!--Temperatura-->
-	<a-entity position="-1.35 -3.35  -0.654" scale="2.30 2.30 2.30">
-
+	<a-entity id="temperature" position="-1.35 -3.35  -0.654" scale="2.30 2.30 2.30">
 
 		<a-entity id="temperature_value" text="value: 0 ºC ; align: center;" position="0.95 2.14 1.90" rotation="0 270 0"
 			scale="1.5 1.5 1.5"></a-entity>
@@ -78,7 +76,8 @@
 	</a-entity>
 
 	<!--CO2-->
-	<a-entity position=" -1.30 -3.35 0.821" scale="2.30 2.30 2.30">
+	<a-entity id="co2" position=" -1.30 -3.35 0.821" scale="2.30 2.30 2.30">
+		
 		<a-entity id="co2_bar"
 			geometry="primitive: torus; arc: 180; radius: 1.02; radiusTubular: 0.07; segmentsRadial: 34; segmentsTubular: 33"
 			position="1 2.1 1.93" rotation="0 90 0" material="color: #1eff00" scale="0.18 0.18 0.18">
@@ -93,8 +92,7 @@
 	</a-entity>
 
 	<!--Altitude-->
-	<a-entity position="-1.35 -3.35  2.276" scale="2.30 2.30 2.30">
-
+	<a-entity id="altitude" position="-1.35 -3.35  2.276" scale="2.30 2.30 2.30">
 
 		<a-entity id="altitude_value" text="value: 0 m ; align: center;" position="0.95 2.14 1.90" rotation="0 270 0"
 			scale="1.5 1.5 1.5"></a-entity>
